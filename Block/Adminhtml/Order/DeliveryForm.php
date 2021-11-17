@@ -7,13 +7,6 @@
 
 namespace AHT\CustomCheckout\Block\Adminhtml\Order;
 
-use Magento\Backend\Model\Session\Quote;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Data\Form\Element\AbstractElement;
-use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Customer\Api\Data\AddressInterface;
-use Magento\Eav\Model\AttributeDataFactory;
-
 /**
  * Adminhtml sales order address block
  * @SuppressWarnings(PHPMD.DepthOfInheritance)
@@ -21,23 +14,13 @@ use Magento\Eav\Model\AttributeDataFactory;
  */
 class DeliveryForm extends \Magento\Backend\Block\Widget\Form\Container
 {
-
-
-    /**
-     * @param \\Magento\Sales\Model\Order
-     */
-    private $_order;
-    /**
-     * @param \Magento\Framework\Data\FormFactory
-     */
-    private $_formFactory;
-
     /**
      * Data Form object
      *
      * @var \Magento\Framework\Data\Form
      */
     protected $_form;
+
     /**
      * Core registry
      *
@@ -64,13 +47,19 @@ class DeliveryForm extends \Magento\Backend\Block\Widget\Form\Container
     protected function _construct()
     {
         $this->_controller = 'adminhtml_order';
-        $this->_mode = 'delivery'; // Point to block Delivery/Form.php
+        // Point to block Delivery/Form.php
+        $this->_mode = 'delivery';
         $this->_blockGroup = 'AHT_CustomCheckout';
         parent::_construct();
         $this->buttonList->update('save', 'label', __('Save Order Delivery'));
         $this->buttonList->remove('delete');
     }
 
+    /**
+     * Get current order id
+     *
+     * @return mixed
+     */
     public function getOrderId()
     {
         return $this->getRequest()->getParam('id');

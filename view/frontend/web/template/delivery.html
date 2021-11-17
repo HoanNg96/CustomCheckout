@@ -1,26 +1,21 @@
-<!--Use 'stepCode' as id attribute-->
+<!-- Use 'stepCode' as id attribute was get from js file -->
 <li data-bind="fadeVisible: isVisible, attr: { id: stepCode }">
-    <!-- id value was get from js file -->
-    <!-- title of custom step -->
+    <!-- title of custom step value was get from js file -->
     <div class="step-title" data-bind="i18n: stepTitle" data-role="title"></div>
-    <!-- stepTitle value was get from js file -->
     <!-- form container -->
     <div id="checkout-step-title" class="step-content" data-role="content">
-        <!-- <div data-bind="if: isLogedIn"> -->
-        <form data-bind="submit: navigateToNextStep" id="delivery-checkout-form" class="form"
-            data-bind="attr: {'data-hasrequired': '* Required Fields'}">
-            <div class="field required" name="delivery.date">
-                <label class="label" for="date">
-                    Delivery date
-                </label>
+        <form data-bind="submit: navigateToNextStep" id="delivery-checkout-form" class="form">
+            <div class="field" name="delivery.date">
+                <label class="label" for="date">Delivery date</label>
                 <div class="control">
-                    <input class="input-text" type="date" name="date" aria-required="true" aria-invalid="false"
-                        id="date">
+                    <input class="input-text" type="date" name="date" id="date">
                 </div>
             </div>
-            <div class="field required" name="delivery.note">
-                <label>Delivery comment</label>
-                <textarea id="delivery-comment" name="comment"></textarea>
+            <div class="field" name="delivery.note">
+                <label class="label" for="comment">Delivery comment</label>
+                <div class="control">
+                    <textarea id="delivery-comment" name="comment"></textarea>
+                </div>
             </div>
             <div class="actions-toolbar">
                 <div class="primary">
@@ -34,6 +29,5 @@
                 </div>
             </div>
         </form>
-        <!-- </div> -->
     </div>
 </li>

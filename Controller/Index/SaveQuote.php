@@ -15,19 +15,9 @@ class SaveQuote extends \Magento\Framework\App\Action\Action
     private $_quoteRepository;
 
     /**
-     * @param \Magento\Framework\Controller\Result\JsonFactory
-     */
-    private $_jsonFactory;
-
-    /**
      * @param \Magento\Framework\Serialize\Serializer\Json
      */
     private $_json;
-
-    /**
-     * @param \Magento\Quote\Model\QuoteFactory
-     */
-    private $_quoteFactory;
 
     /**
      * @param \Magento\Framework\App\Action\Context $context
@@ -36,30 +26,32 @@ class SaveQuote extends \Magento\Framework\App\Action\Action
         \Magento\Framework\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $pageFactory,
         \Magento\Quote\Model\QuoteRepository $quoteRepository,
-        \Magento\Framework\Controller\Result\JsonFactory $jsonFactory,
-        \Magento\Framework\Serialize\Serializer\Json $json,
-        \Magento\Quote\Model\QuoteFactory $quoteFactory
+        \Magento\Framework\Serialize\Serializer\Json $json
     ) {
         $this->_pageFactory = $pageFactory;
         $this->_quoteRepository = $quoteRepository;
-        $this->_jsonFactory = $jsonFactory;
         $this->_json = $json;
-        $this->_quoteFactory = $quoteFactory;
         return parent::__construct($context);
     }
+
     /**
-     * View page action
+     * Save custom checkout form data to current quote
      *
-     * @return \Magento\Framework\Controller\ResultInterface
+     * @return void
      */
     public function execute()
     {
+        // get data from knockoutjs
         $data = $this->getRequest()->getContent();
+        // convert json data to array
         $response = $this->_json->unserialize($data);
         $quoteId = $response['quoteId'];
-        $quote = $this->_quoteRepository->get($quoteId); // Get quote by id
-        $quote->setData('delivery_date', $response['date']); // set data
+        // get current quote Id
+        $quote = $this->_quoteRepository->get($quoteId);
+        // add data to current quote
+        $quote->setData('delivery_date', $response['date']);
         $quote->setData('delivery_comment', $response['comment']);
+        // save quote
         $this->_quoteRepository->save($quote);
     }
 }

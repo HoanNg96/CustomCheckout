@@ -1,7 +1,8 @@
 <?php
 
-/** @var \AHT\CustomCheckout\Block\Template $block */
+/** @var AHT\CustomCheckout\Block\Adminhtml\Order\Delivery $block */
 $order = $block->getOrder();
+
 ?>
 <div class="admin__page-section-item order-payment-method">
     <div class="admin__page-section-item-title">
@@ -9,6 +10,6 @@ $order = $block->getOrder();
         <span><?= /* @noEscape */ $block->getEditLink(); ?></span>
     </div>
     <div class="admin__page-section-item-content">
-        <p><span><label>Date : </label></span><?= $order->getDeliveryDate() ?></p>
-        <p><span><label>Comment : </label></span><?= $order->getDeliveryComment() ?></p>
+        <p><span><label>Date : </label></span><?= $block->escapeHtml($order->getDeliveryDate()) ?></p>
+        <p><span><label>Comment : </label></span><?= $block->escapeHtml($order->getDeliveryComment()) ?></p>
     </div>

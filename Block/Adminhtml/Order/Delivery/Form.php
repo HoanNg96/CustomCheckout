@@ -40,15 +40,6 @@ class Form extends \Magento\Sales\Block\Adminhtml\Order\Create\Form\AbstractForm
      * @param PriceCurrencyInterface $priceCurrency
      * @param \Magento\Framework\Data\FormFactory $formFactory
      * @param \Magento\Framework\Reflection\DataObjectProcessor $dataObjectProcessor
-     * @param \Magento\Directory\Helper\Data $directoryHelper
-     * @param \Magento\Framework\Json\EncoderInterface $jsonEncoder
-     * @param \Magento\Customer\Model\Metadata\FormFactory $customerFormFactory
-     * @param \Magento\Customer\Model\Options $options
-     * @param \Magento\Customer\Helper\Address $addressHelper
-     * @param \Magento\Customer\Api\AddressRepositoryInterface $addressService
-     * @param \Magento\Framework\Api\SearchCriteriaBuilder $criteriaBuilder
-     * @param \Magento\Framework\Api\FilterBuilder $filterBuilder
-     * @param \Magento\Customer\Model\Address\Mapper $addressMapper
      * @param \Magento\Framework\Registry $registry
      * @param array $data
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
@@ -60,15 +51,6 @@ class Form extends \Magento\Sales\Block\Adminhtml\Order\Create\Form\AbstractForm
         PriceCurrencyInterface $priceCurrency,
         \Magento\Framework\Data\FormFactory $formFactory,
         \Magento\Framework\Reflection\DataObjectProcessor $dataObjectProcessor,
-        \Magento\Directory\Helper\Data $directoryHelper,
-        \Magento\Framework\Json\EncoderInterface $jsonEncoder,
-        \Magento\Customer\Model\Metadata\FormFactory $customerFormFactory,
-        \Magento\Customer\Model\Options $options,
-        \Magento\Customer\Helper\Address $addressHelper,
-        \Magento\Customer\Api\AddressRepositoryInterface $addressService,
-        \Magento\Framework\Api\SearchCriteriaBuilder $criteriaBuilder,
-        \Magento\Framework\Api\FilterBuilder $filterBuilder,
-        \Magento\Customer\Model\Address\Mapper $addressMapper,
         \Magento\Framework\Registry $registry,
         \Magento\Sales\Model\Order $order,
         array $data = []

@@ -15,6 +15,11 @@ class Quote implements \Magento\Framework\Event\ObserverInterface
         $this->_quoteFactory = $quoteFactory;
     }
 
+    /**
+     * Save delivery from quote to order
+     *
+     * @return void
+     */
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
         try {

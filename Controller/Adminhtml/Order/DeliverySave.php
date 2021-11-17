@@ -8,7 +8,6 @@ class DeliverySave extends \Magento\Backend\App\Action
 {
     const ADMIN_RESOURCE = 'Magento_Sales::actions_edit';
 
-
     /**
      * @var \Magento\Framework\View\Result\PageFactory
      */

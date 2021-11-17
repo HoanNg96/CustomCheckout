@@ -5,7 +5,6 @@ define(
         'uiComponent',
         'underscore',
         'Magento_Checkout/js/model/step-navigator',
-        'Magento_Customer/js/model/customer',
         'Magento_Checkout/js/model/quote',
         'mage/url',
         'mage/storage'
@@ -16,7 +15,6 @@ define(
         Component,
         _,
         stepNavigator,
-        customer,
         quote,
         urlBuilder,
         storage
@@ -33,14 +31,12 @@ define(
 
             //add here your logic to display step,
             isVisible: ko.observable(true),
-            /* isLogedIn: customer.isLoggedIn(), */
             //step code will be used as step content id in the component template
             stepCode: 'delivery', /* correspond html file name in sibling template folder */
             //step title value
             stepTitle: 'Delivery step',
 
             /**
-            *
             * @returns {*}
             */
             initialize: function () {
@@ -76,10 +72,13 @@ define(
             * for switching to your custom step
             */
             navigate: function () {
-                this.isVisible(true); // show custom step content when user navigates via url anchor or back button
+                // show custom step content when user navigates via url anchor or back button
+                this.isVisible(true);
             },
 
             /**
+            * Sent form data when click next
+            * 
             * @returns void
             */
             navigateToNextStep: function () {
@@ -99,9 +98,7 @@ define(
                     function () {
                         stepNavigator.next();
                     }
-                ).fail(
-                );
-
+                ).fail();
             }
         });
     }

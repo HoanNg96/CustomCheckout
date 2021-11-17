@@ -6,11 +6,13 @@
                         <item name="components" xsi:type="array">
                             <item name="checkout" xsi:type="array">
                                 <item name="children" xsi:type="array">
+                                    <!-- node to listing checkout step -->
                                     <item name="steps" xsi:type="array">
                                         <item name="children" xsi:type="array">
                                             <!-- The new step you add -->
                                             <item name="delivery-step" xsi:type="array">
-                                                <item name="component" xsi:type="string">AHT_CustomCheckout/js/view/delivery-step</item> <!-- link to js file -->
+                                                <!-- link to js file -->
+                                                <item name="component" xsi:type="string">AHT_CustomCheckout/js/view/delivery-step</item>
                                                     <!--To display step content before shipping step "sortOrder" value should be < 1-->
                                                     <!--To display step content between shipping step and payment step  1 < "sortOrder" < 2 -->
                                                     <!--To display step content after payment step "sortOrder" > 2 -->
