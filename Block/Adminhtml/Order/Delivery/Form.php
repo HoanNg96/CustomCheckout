@@ -17,7 +17,7 @@ use Magento\Framework\Pricing\PriceCurrencyInterface;
 class Form extends \Magento\Sales\Block\Adminhtml\Order\Create\Form\AbstractForm
 {
     /**
-     * Address form template
+     * Delivery form template
      *
      * @var string
      */
@@ -29,10 +29,14 @@ class Form extends \Magento\Sales\Block\Adminhtml\Order\Create\Form\AbstractForm
      * @var \Magento\Framework\Registry
      */
     protected $_coreRegistry = null;
+
     /**
+     * Order instance
+     *
      * @param \Magento\Sales\Model\Order
      */
     private $_order;
+
     /**
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Backend\Model\Session\Quote $sessionQuote
@@ -75,7 +79,11 @@ class Form extends \Magento\Sales\Block\Adminhtml\Order\Create\Form\AbstractForm
      */
     protected function _prepareForm()
     {
-        $fieldset = $this->_form->addFieldset('main', ['no_container' => true]);
+        $fieldset = $this->_form->addFieldset(
+            'main', // html id of fieldset
+            ['no_container' => true] // not use fieldset to wrap fields
+        );
+
         $fieldset->addField(
             'id',
             'hidden',
@@ -105,12 +113,17 @@ class Form extends \Magento\Sales\Block\Adminhtml\Order\Create\Form\AbstractForm
                 'rows' => 10,
             ]
         );
-        $this->_form->setId('edit_form');
-        $this->_form->setMethod('post');
-        $this->_form->setAction(
-            $this->getUrl('sales/*/deliverysave', ['id' => $this->getOrderId()])
-        );
+
+        // use <form> tag to wrap fieldset, fields
         $this->_form->setUseContainer(true);
+        // form html id
+        $this->_form->setId('edit_form');
+        // form method
+        $this->_form->setMethod('post');
+        // form action
+        $this->_form->setAction(
+            $this->getUrl('*/*/deliverysave', ['id' => $this->getOrderId()])
+        );
 
         return $this;
     }
@@ -134,6 +147,12 @@ class Form extends \Magento\Sales\Block\Adminhtml\Order\Create\Form\AbstractForm
     {
         return $this->getRequest()->getParam('id');
     }
+
+    /**
+     * Return current order object
+     *
+     * @return \Magento\Sales\Model\Order
+     */
     public function getOrder()
     {
         $id = $this->getOrderId();

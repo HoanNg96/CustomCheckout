@@ -13,10 +13,10 @@
 3. add new checkout step:
     - add js file in <your_module_dir>/view/frontend/web/js/view
     - add html file in <your_module_dir>/view/frontend/web/template
-    - add new step to checkout page layout (checkout_index_index.xml)
-- add controller to save form data to quote table
-- add observer to save form data to sales_order table
+    - add new step to checkout page layout
+4. add controller to save form data to quote table
+5. add observer to save form data to sales_order table
 
 * BE:
-- add delivery info in order info (layout, templates, block)
-- add form to edit delivery info (block)
+6. add delivery info field to order info (layout, templates, block)
+7. add form to edit & save delivery info (controller, block, layout, template)

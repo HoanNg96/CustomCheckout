@@ -8,7 +8,7 @@
 namespace AHT\CustomCheckout\Block\Adminhtml\Order;
 
 /**
- * Adminhtml sales order address block
+ * Adminhtml sales order delivery block
  * @SuppressWarnings(PHPMD.DepthOfInheritance)
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
@@ -46,10 +46,11 @@ class DeliveryForm extends \Magento\Backend\Block\Widget\Form\Container
      */
     protected function _construct()
     {
+        // path to current file separate by "_"
         $this->_controller = 'adminhtml_order';
-        // Point to block Delivery/Form.php
+        // point to block delivery/form
         $this->_mode = 'delivery';
-        $this->_blockGroup = 'AHT_CustomCheckout';
+        $this->_blockGroup = 'AHT_CustomCheckout'; //module name
         parent::_construct();
         $this->buttonList->update('save', 'label', __('Save Order Delivery'));
         $this->buttonList->remove('delete');
@@ -72,6 +73,6 @@ class DeliveryForm extends \Magento\Backend\Block\Widget\Form\Container
      */
     public function getBackUrl()
     {
-        return $this->getUrl('sales/*/view', ['order_id' => $this->getOrderId()]);
+        return $this->getUrl('*/*/view', ['order_id' => $this->getOrderId()]);
     }
 }
