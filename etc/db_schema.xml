@@ -3,9 +3,11 @@
     <table name="sales_order" resource="sales" >
         <column xsi:type="date" name="delivery_date" nullable="true" comment="Delivery date"/>
         <column xsi:type="varchar" name="delivery_comment" nullable="true" length="255" default="" comment="Delivery comment"/>
+        <column xsi:type="varchar" name="customer_note" nullable="true" length="255" default="" comment="Customer Note"/>
     </table>
     <table name="quote" >
         <column xsi:type="date" name="delivery_date" nullable="true" comment="Delivery date"/>
         <column xsi:type="varchar" name="delivery_comment" nullable="true" length="255" default="" comment="Delivery comment"/>
+        <column xsi:type="varchar" name="customer_note" nullable="true" length="255" default="" comment="Customer Note"/>
     </table>
 </schema>

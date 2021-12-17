@@ -16,9 +16,66 @@
                                                     <!--To display step content before shipping step "sortOrder" value should be < 1-->
                                                     <!--To display step content between shipping step and payment step  1 < "sortOrder" < 2 -->
                                                     <!--To display step content after payment step "sortOrder" > 2 -->
-                                                <item name="sortOrder" xsi:type="string">2</item>
+                                                <!-- <item name="sortOrder" xsi:type="string">2</item> -->
                                                 <item name="children" xsi:type="array">
                                                     <!--add here child component declaration for your step-->
+                                                </item>
+                                            </item>
+                                            <item name="customer-note" xsi:type="array">
+                                                <item name="component" xsi:type="string">AHT_CustomCheckout/js/view/customer-note</item>
+                                                <!--To display step content before shipping step "sortOrder" value should be < 1-->
+                                                <!--To display step content between shipping step and payment step  1 < "sortOrder" < 2 -->
+                                                <!--To display step content after payment step "sortOrder" > 2 -->
+                                                <item name="config" xsi:type="array">
+                                                    <!-- And this to add your html template  -->
+                                                    <item name="template" xsi:type="string">AHT_CustomCheckout/customer-note</item>
+                                                </item>
+                                                <!--  -->
+                                                <!-- <item name="sortOrder" xsi:type="string">2</item> -->
+                                                <item name="children" xsi:type="array">
+                                                <!--add here child component declaration for your step-->
+                                                    <item name="custom-checkout-form-fieldset" xsi:type="array">
+                                                    <!-- uiComponent is used as a wrapper for form fields (its template will render all children as a list) -->
+                                                        <item name="component" xsi:type="string">uiComponent</item>
+                                                        <!-- the following display area is used in template (see below) -->
+                                                        <item name="displayArea" xsi:type="string">customer-note-form-fields</item>
+                                                        <item name="children" xsi:type="array">
+                                                            <item name="note-2" xsi:type="array">
+                                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                                <item name="config" xsi:type="array">
+                                                                    <!-- customScope is used to group elements within a single form (e.g. they can be validated separately) -->
+                                                                    <item name="customScope" xsi:type="string">CustomerNoteScope</item>
+                                                                    <item name="template" xsi:type="string">ui/form/field</item>
+                                                                    <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                                    <item name="name" xsi:type="string">note-2</item>
+                                                                </item>
+                                                                <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                <item name="dataScope" xsi:type="string">CustomerNoteScope.text_field</item>
+                                                                <item name="label" xsi:type="string" translate="true">Customer Note 2 For Shop</item>
+                                                                <item name="sortOrder" xsi:type="string">2</item>
+                                                                <item name="validation" xsi:type="array">
+                                                                    <item name="required-entry" xsi:type="string">true</item>
+                                                                </item>
+                                                            </item>
+                                                            <item name="note-1" xsi:type="array">
+                                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                                <item name="config" xsi:type="array">
+                                                                    <!-- customScope is used to group elements within a single form (e.g. they can be validated separately) -->
+                                                                    <item name="customScope" xsi:type="string">CustomerNoteScope</item>
+                                                                    <item name="template" xsi:type="string">ui/form/field</item>
+                                                                    <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                                    <item name="name" xsi:type="string">note-1</item>
+                                                                </item>
+                                                                <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                <item name="dataScope" xsi:type="string">CustomerNoteScope.text_field</item>
+                                                                <item name="label" xsi:type="string" translate="true">Customer Note 1 For Shop</item>
+                                                                <item name="sortOrder" xsi:type="string">1</item>
+                                                                <item name="validation" xsi:type="array">
+                                                                    <item name="required-entry" xsi:type="string">false</item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
                                                 </item>
                                             </item>
                                         </item>
