@@ -1,9 +1,10 @@
 define([
+    'jquery',
     'ko',
     'uiComponent',
     'underscore',
     'Magento_Checkout/js/model/step-navigator'
-], function (ko, Component, _, stepNavigator) {
+], function ($, ko, Component, _, stepNavigator) {
     'use strict';
 
     /**
@@ -63,6 +64,8 @@ define([
          * @returns void
          */
         navigateToNextStep: function () {
+            var note = $("input[name=note]").val();
+            console.log(note);
             stepNavigator.next();
         }
     });
