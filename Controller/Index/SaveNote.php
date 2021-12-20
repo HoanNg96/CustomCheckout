@@ -49,7 +49,6 @@ class SaveNote extends \Magento\Framework\App\Action\Action
         // get current quote Id
         $quote = $this->_quoteRepository->get($quoteId);
         // add data to current quote
-        /* $quote->setData('customer_note', $response['note']); */
         $quote->setCustomerNote($response['note']);
         // save quote
         $this->_quoteRepository->save($quote);
