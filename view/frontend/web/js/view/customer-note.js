@@ -3,8 +3,11 @@ define([
     'ko',
     'uiComponent',
     'underscore',
-    'Magento_Checkout/js/model/step-navigator'
-], function ($, ko, Component, _, stepNavigator) {
+    'Magento_Checkout/js/model/step-navigator',
+    'Magento_Checkout/js/model/quote',
+    'mage/url',
+    'mage/storage'
+], function ($, ko, Component, _, stepNavigator, quote, urlBuilder, storage) {
     'use strict';
 
     /**
@@ -65,8 +68,19 @@ define([
          */
         navigateToNextStep: function () {
             var note = $("input[name=note]").val();
-            console.log(note);
-            stepNavigator.next();
+
+            var quoteId = quote.getQuoteId();
+            // controller url to send data
+            var url = urlBuilder.build('delivery/index/savenote');
+            storage.post(
+                url,
+                JSON.stringify({ quoteId: quoteId, note: note }), // send data as JSON
+                false
+            ).done(
+                function () {
+                    stepNavigator.next();
+                }
+            ).fail();
         }
     });
 });
